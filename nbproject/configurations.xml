@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="79">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df name="struct_v2" root=".">
+      <df name="00_include">
+        <in>hungarian.h</in>
+        <in>lm_eval.h</in>
+        <in>lmmin.h</in>
+        <in>struct.h</in>
+        <in>struct_comparison.h</in>
+        <in>struct_geometry.h</in>
+        <in>struct_pdb.h</in>
+        <in>struct_utils.h</in>
+      </df>
+      <df name="01_data_structures">
+        <in>struct_geometric_descriptor.c</in>
+        <in>struct_geometry.c</in>
+        <in>struct_map.c</in>
+        <in>struct_representation.c</in>
+        <in>struct_table.c</in>
+      </df>
+      <df name="02_parsers">
+        <in>struct_input.c</in>
+        <in>struct_read_cmd_file.c</in>
+        <in>struct_read_pdb.c</in>
+        <in>struct_table_input.c</in>
+      </df>
+      <df name="03_output">
+        <in>old_struct_preproc_out.c</in>
+        <in>struct_descr_out.c</in>
+        <in>struct_preproc_out.c</in>
+        <in>struct_recursive_output.c</in>
+      </df>
+      <df name="04_geometric_match">
+        <in>struct_chisq.c</in>
+        <in>struct_complement_match.c</in>
+        <in>struct_complement_match_old.c</in>
+        <in>struct_ks.c</in>
+        <in>struct_quaternion.c</in>
+        <in>struct_scoring_fn.c</in>
+      </df>
+      <df name="05_preproc">
+        <df name="stride">
+          <in>stride.c</in>
+          <in>stride.h</in>
+          <in>stride_chain.c</in>
+          <in>stride_chain.h</in>
+          <in>stride_cmd.c</in>
+          <in>stride_cmd.h</in>
+          <in>stride_geom.c</in>
+          <in>stride_geom.h</in>
+          <in>stride_hbond.c</in>
+          <in>stride_hbond.h</in>
+          <in>stride_helix.c</in>
+          <in>stride_helix.h</in>
+          <in>stride_map.c</in>
+          <in>stride_map.h</in>
+          <in>stride_pdb.c</in>
+          <in>stride_pdb.h</in>
+          <in>stride_phipsi.c</in>
+          <in>stride_phipsi.h</in>
+          <in>stride_sheet.c</in>
+          <in>stride_sheet.h</in>
+          <in>stride_sheet_fasn.c</in>
+          <in>stride_sheet_fasn.h</in>
+          <in>stride_sheet_mpat.c</in>
+          <in>stride_sheet_mpat.h</in>
+          <in>stride_types.h</in>
+          <in>stride_util.c</in>
+          <in>stride_util.h</in>
+          <in>stridetest.c</in>
+        </df>
+        <in>calcstride.c</in>
+        <in>calcstride.h</in>
+        <in>geomdescr.cc</in>
+        <in>geomdescr.h</in>
+        <in>line.cc</in>
+        <in>line.h</in>
+        <in>linefit.cc</in>
+        <in>linefit.h</in>
+        <in>linefittest.cc</in>
+        <in>main.cc</in>
+        <in>mlexception.cc</in>
+        <in>mlexception.h</in>
+        <in>pdb.h</in>
+        <in>protein.h</in>
+        <in>readpdb.c</in>
+        <in>readpdb.h</in>
+        <in>vec.cc</in>
+        <in>vec.h</in>
+      </df>
+      <df name="06_main">
+        <in>struct.c</in>
+      </df>
+      <df name="07_utils">
+        <in>hungarian.c</in>
+        <in>hungarian.h</in>
+        <in>hungarian_test.c</in>
+        <in>struct_aa_code.c</in>
+        <in>struct_bessel.c</in>
+        <in>struct_linalg.c</in>
+        <in>struct_utils.c</in>
+      </df>
+      <df name="08_data">
+        <in>quat_test.c</in>
+        <in>struct_integral_table.c</in>
+      </df>
+      <df name="10_objects">
+        <in>junk.c</in>
+      </df>
+      <df name="11_tests">
+      </df>
+      <df name="12_python">
+      </df>
+      <df name="15_postproc">
+        <df name="old">
+          <in>struct_post.c</in>
+        </df>
+        <df name="perlscr">
+        </df>
+        <df name="self_standing">
+          <in>orth_pdb_tfm.c</in>
+          <in>pdb.h</in>
+          <in>pdb_find_tfm.c</in>
+          <in>utils.c</in>
+          <in>utils.h</in>
+        </df>
+        <in>struct_map2rotation.c</in>
+        <in>struct_postp_2.c</in>
+        <in>struct_postproc.Apr29.c</in>
+        <in>struct_postproc.c</in>
+      </df>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>10_objects/makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>10_objects/makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>10_objects</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f makefile</buildCommand>
+          <cleanCommand>${MAKE} -f makefile clean</cleanCommand>
+          <executablePath></executablePath>
+          <cTool>
+            <incDir>
+              <pElem>10_objects</pElem>
+              <pElem>00_include</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>_OPENMP=200505</Elem>
+            </preprocessorList>
+          </cTool>
+        </makeTool>
+      </makefileType>
+      <item path="00_include/lm_eval.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="00_include/lmmin.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="00_include/struct_comparison.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="01_data_structures/struct_geometric_descriptor.c"
+            ex="true"
+            tool="0"
+            flavor="0">
+      </item>
+      <item path="03_output/old_struct_preproc_out.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="03_output/struct_preproc_out.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="04_geometric_match/struct_chisq.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="04_geometric_match/struct_complement_match_old.c"
+            ex="true"
+            tool="0"
+            flavor="0">
+      </item>
+      <item path="04_geometric_match/struct_ks.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/calcstride.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/calcstride.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/geomdescr.cc" ex="true" tool="1" flavor="0">
+      </item>
+      <item path="05_preproc/geomdescr.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/line.cc" ex="true" tool="1" flavor="0">
+      </item>
+      <item path="05_preproc/line.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/linefit.cc" ex="true" tool="1" flavor="0">
+      </item>
+      <item path="05_preproc/linefit.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/linefittest.cc" ex="true" tool="1" flavor="0">
+      </item>
+      <item path="05_preproc/main.cc" ex="true" tool="1" flavor="0">
+      </item>
+      <item path="05_preproc/mlexception.cc" ex="true" tool="1" flavor="0">
+      </item>
+      <item path="05_preproc/mlexception.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/pdb.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/protein.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/readpdb.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/readpdb.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_chain.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_chain.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_cmd.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_cmd.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_geom.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_geom.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_hbond.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_hbond.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_helix.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_helix.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_map.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_map.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_pdb.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_pdb.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_phipsi.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_phipsi.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_sheet.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_sheet.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_sheet_fasn.c"
+            ex="true"
+            tool="0"
+            flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_sheet_fasn.h"
+            ex="true"
+            tool="3"
+            flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_sheet_mpat.c"
+            ex="true"
+            tool="0"
+            flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_sheet_mpat.h"
+            ex="true"
+            tool="3"
+            flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_types.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_util.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stride_util.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="05_preproc/stride/stridetest.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="05_preproc/vec.cc" ex="true" tool="1" flavor="0">
+      </item>
+      <item path="05_preproc/vec.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="07_utils/hungarian_test.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="07_utils/struct_bessel.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="08_data/quat_test.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="08_data/struct_integral_table.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="10_objects/junk.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="15_postproc/old/struct_post.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="15_postproc/self_standing/orth_pdb_tfm.c"
+            ex="true"
+            tool="0"
+            flavor="0">
+      </item>
+      <item path="15_postproc/self_standing/pdb.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="15_postproc/self_standing/pdb_find_tfm.c"
+            ex="true"
+            tool="0"
+            flavor="0">
+      </item>
+      <item path="15_postproc/self_standing/utils.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="15_postproc/self_standing/utils.h" ex="true" tool="3" flavor="0">
+      </item>
+      <item path="15_postproc/struct_postp_2.c" ex="true" tool="0" flavor="0">
+      </item>
+      <item path="15_postproc/struct_postproc.Apr29.c" ex="true" tool="0" flavor="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

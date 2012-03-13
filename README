@@ -1,0 +1,68 @@
+INSTALLING
+----------
+
+a) making the pre-processor
+
+depends on lapack, and 
+assumes it is installed in /usr/lib/ 
+(sudo apt-get install liblapack-dev)
+also depends stride, which is included
+
+> cd $STRUCT_HOME/05_preproc/stride
+> make
+> make clean
+
+> cd ..
+> make
+> make clean
+
+the executable called preproc should appear in $STRUCT_HOME
+both give usage statements if ran without arguments
+
+b) making struct proper
+
+also depends on lapack
+
+> cd ../10_objects/
+> make
+> make clean
+
+the executable called struct should now be in $STRUCT_HOME
+
+
+
+
+TEST CASES
+----------
+
+a) 1-on-1 comparison
+
+> cd $STRUCT_HOME/11_tests/01_1d4xG_2d8bA/
+
+preprocessing:
+> $STRUCT_HOME/preproc 1d4xG 1d4xG.pdb 1d4xG.db
+> $STRUCT_HOME/preproc 2d8bA 2d8bA.pdb 2d8bA.db
+
+comparing 1d4xG("target") and 2d8bA("query")
+> $STRUCT_HOME/struct 1d4xG 2d8bA params
+
+in the params file, the exclamation mark (!)
+is the comment sign - comment it out to get a silent run
+(only the output file with the score is produced)
+
+
+b) 1-to-many comparison
+
+> cd $STRUCT_HOME/11_tests/00_kolodny
+
+the presprocessing already done (db files
+for the target are concatenated in all.db)
+
+> $STRUCT_HOME/struct all.db  cathdbdir/1a02N01.db params
+(any other dbfile from cathdbdir/1a02N01.db can be used)
+
+postprocessing - producing a match on the backbone level 
+for the top 10 (substitute your own number) best hits:
+
+> $STRUCT_HOME/15_postproc/perlscr/postp_3.pl 1a02N01.struct_out params 10
+1a02N01.struct_out will be moved (by the script) to 1a02N01.struct_out.full

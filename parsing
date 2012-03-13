@@ -1,0 +1,21 @@
+02_parsers/struct_read_cmd_file.c:	fprintf (log, "postp option should be accompanied by two pdb file names\n");
+02_parsers/struct_read_cmd_file.c:	fprintf (log,"(options pdbf1 and pdbf2, followed by the full path).\n");
+Binary file 05_preproc/stride/libstride.a matches
+06_main/struct.c:		fprintf ( digest,"%% columns: \n");
+06_main/struct.c:		fprintf ( digest,"%% query, target: structure names\n");
+06_main/struct.c:		fprintf ( digest,"%% geom_z:  z score for the orientational match \n");
+06_main/struct.c:		fprintf ( digest,"%% <dL>:    average length mismatch for matched SSEs \n");
+06_main/struct.c:		fprintf ( digest,"%% T:       total score assigned to matched SSEs \n");
+06_main/struct.c:		fprintf ( digest,"%% frac:    T divided by the number of matched SSEs \n");
+06_main/struct.c:		fprintf ( digest,"%% GC_rmsd: RMSD btw geometric centers of matched SSEs (before postprocessing) \n");
+06_main/struct.c:		fprintf ( digest,"%% A:       (after postprocessing) the alignment score \n");
+06_main/struct.c:		fprintf ( digest,"%% aln_L:   (after postprocessing) the alignment length \n\n");
+06_main/struct.c:		fprintf ( digest,"%% %6s%6s %6s %6s  %6s %6s %6s %6s %6s %6s \n",
+06_main/struct.c:		    fprintf ( digest,
+06_main/struct.c:		    fprintf (digest, "\n");
+06_main/struct.c:		    fprintf ( digest,
+06_main/struct.c:		    fprintf (digest, "\n");
+06_main/struct.c:	    fprintf (digest, "done   CPU:  %10.3lf s\n", (double)(CPU_time_end-CPU_time_begin)/CLOCKS_PER_SEC );
+06_main/struct.c:	 fprintf (digest, "done   CPU:  %10.3lf s\n", (double)(CPU_time_end-CPU_time_begin)/CLOCKS_PER_SEC );
+Binary file 08_data/qtest matches
+Binary file 08_data/sti matches

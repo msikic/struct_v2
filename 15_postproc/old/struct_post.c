@@ -1,0 +1,1 @@
+/* take struct output and change it to pymol pse */
