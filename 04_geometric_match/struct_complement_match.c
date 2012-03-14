@@ -6,7 +6,7 @@
 # define JACKFRUIT 8
 
 /****************************************/
-int complement_match_old (Representation* X_rep, Representation* Y_rep,
+int complement_match (Representation* X_rep, Representation* Y_rep,
 		      Map * map, int map_max,
 		      int * map_ctr, int * map_best, int best_max, int parent_map){
 	
@@ -136,10 +136,19 @@ int complement_match_old (Representation* X_rep, Representation* Y_rep,
     /* that correspond in type             */
     /*  and can be mapped onto each other  */
     /***************************************/
+    
+    /*
+     * Exhaustive search for all triplets
+     */
     find_best_triples(X_rep, Y_rep, no_top_rmsd, best_rmsd, best_triple_x, 
            best_triple_y, best_quat);
-/*
     
+    /*
+     * Greedy search - old algorithm
+    */
+    
+/*
+
     find_best_triples_old(X_rep, Y_rep, no_top_rmsd, best_rmsd, best_triple_x, 
            best_triple_y, best_quat);
 */
@@ -895,7 +904,7 @@ int find_best_triples(Representation* X_rep, Representation* Y_rep, int no_top_r
     double q_init[4] = {0.0};
     double ** cmx = X_rep->cm;
     double ** cmy = Y_rep->cm;
-    double threashold_dist = 25;
+    double threashold_dist = options.threshold_distance;
 
     /***************************************/
     /* find reasonable triples of SSEs      */
@@ -907,10 +916,9 @@ int find_best_triples(Representation* X_rep, Representation* Y_rep, int no_top_r
         best_triple_x[top_ctr][0] = -1;
     }
 
-/*
-    struct timeval t1,t2,t3,t4,t5,t6,t7,t8;
-    static long e1=0, e2=0, e3=0, e4=0;
-*/
+    /*
+     * Exhaustive search through a 6D space - ugly code
+     */
 
     for (i = 0; i < NX - 2; ++i) {
         x_triple[0] = i;

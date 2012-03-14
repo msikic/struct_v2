@@ -93,8 +93,9 @@ typedef struct {
     char outname[BUFFLEN];/* name for the output file   */
     char path[BUFFLEN];   /* path to the integral table */
     
-    int sw_score; // use smith-waterman score in database search ?
-    int score_out; // 0 - sw_score, 1 - hungarian, 2 - both
+    int sw_score; // use smith-waterman score in database search (values 0 or 1)
+    int score_out; // 0 - SW, 1 - Hungarian, 2 - both - choose better one
+    int threshold_distance; // threshold distance used for calculation of triples
     
 } Options;
 
@@ -234,7 +235,7 @@ extern double exp_table [TABLE_SIZE];
 
 int check_gap_lengths  (Map * map, double *gap_score );
 
-int complement_match_old (Representation* X_rep, Representation* Y_rep,
+int complement_match (Representation* X_rep, Representation* Y_rep,
 		      Map * map, int map_max,
 		      int * map_ctr, int * map_best, int best_max, int parent_map);
 int construct_translation_vecs ( Representation *X_rep,  Representation *Y_rep,
@@ -283,8 +284,8 @@ int needleman_wunsch (int max_i, int max_j, double **distance,
 
 int smith_waterman (Penalty_parametrization *params, int max_i, int max_j, double **similarity,
 		    int *map_i2j, int * map_j2i, double * aln_score);
-int scoring (int NX, int NY, double **similarity, int * x2y, int * y2x, double * alignment );
-void similarity_to_scoring(int NX, int NY, int multiplier, double** similarity, int ** scoring );
+int hungarian_alignment (int NX, int NY, double **similarity, int * x2y, int * y2x, double * alignment );
+void similarity_to_scoring(int NX, int NY, int multiplier, double** similarity, int ** hungarian_alignment );
 
 int normalized_cross (double *x, double *y, double * v, double *norm_ptr);
 int output (FILE * fptr,char *name, char chain,  Protein * protein);

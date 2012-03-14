@@ -77,8 +77,10 @@ int set_default_options() {
     memset(options.path, 0, BUFFLEN);
     sprintf(options.path, "%s", INTEGRAL_TABLE);
     
-    options.sw_score = 1;
+    options.sw_score = 1; // database search calculation type
     options.score_out = 2; // 0 - SW, 1 - Hungarian, 2 - both - choose better one
+    options.threshold_distance = 25; 
+    
 
     return 0;
 }
@@ -194,7 +196,7 @@ int main(int argc, char * argv[]) {
         /* loop over the database :*/
 
 
-        // Added by Mile - using for instead of while - parallelization
+        // Added by Mile - using FOR instead of WHILE - parallelization
 
         int tgt_counter = 0;
         int i;
@@ -204,6 +206,9 @@ int main(int argc, char * argv[]) {
         rewind(tgt_fptr);
         tgt_done = 0;
 
+        /*
+         * Counting number of successful targets
+         */
         while (!tgt_done) {
             retval = get_next_descr(tgt_fptr, &tgt_descr);
             if (retval == 0 || retval == 1) {
@@ -213,6 +218,9 @@ int main(int argc, char * argv[]) {
             }
 
         }
+        /*
+         * Initialization of a Descr array (array of targets) - easy parallelization
+         */
         
         rewind(tgt_fptr);
         tgt_descr_array = (Descr *) calloc(tgt_counter, sizeof(Descr));
@@ -225,7 +233,9 @@ int main(int argc, char * argv[]) {
         }
         
         
-        //printf("%d\n", tgt_counter);
+        /*
+         * Storing targets a returning values
+         */
         
         for(i = 0; i < tgt_counter; ++i) {
             retval = get_next_descr(tgt_fptr, &tgt_descr_array[i]);
@@ -246,6 +256,7 @@ int main(int argc, char * argv[]) {
                 while ( ! tgt_done) {
          */
         
+        // Start of parallelization
         if (options.postprocess) omp_set_num_threads(1);
         else omp_set_num_threads(6);
         
@@ -257,6 +268,9 @@ int main(int argc, char * argv[]) {
 
                 
                 int retval = retval_array[i];
+                /*
+                 * Two scores one for Smith Waterman, another for Hungarian in database search phase
+                 */
                 Score score;
                 Score score_hung;
                 Descr tgt_descr = tgt_descr_array[i];
@@ -304,22 +318,16 @@ int main(int argc, char * argv[]) {
                                     tgt_descr.name, qry_descr.name);
                             exit(retval);
                         }
-                        //double relative_score = 0 , relative_score_hung = 0;
+
+ 
+                        /*
+                         * Output score. Can be based:
+                         * - only on SW alignment during the database search
+                         * - only on Hungarian algorithm during the database search
+                         * - on combination depending on the postprocessing score
+                         */  
+                                
                         
-                        // a new scoring scheme
-                       // if (options.postprocess && score_hung.res_almt_length > 40 && score.res_almt_length > 0){
-/*
-                        if (options.postprocess && score.res_almt_length > 0){
-                            relative_score = score.res_almt_score/score.res_almt_length;
-                            relative_score_hung = score_hung.res_almt_score/score_hung.res_almt_length;
-                        }
-                            
-                        
-                        if (relative_score_hung > relative_score){
- * 
- * 
- * 
-*/
                         switch (options.score_out) {
                             case 0: // SW
                                 if (query_size > target_size) {
@@ -381,6 +389,7 @@ int main(int argc, char * argv[]) {
         }
 
         // Added by Mile
+        // Memory cleaning
         for(i = 0; i < tgt_counter; ++i) {
             descr_shutdown ( &tgt_descr_array[i] );
         }
@@ -504,22 +513,17 @@ int compare(Descr * descr1, Descr *descr2, Score *score, Score *score_hung) {
     int *map_best_hung = NULL;
     map_best_hung =  emalloc(map_max * sizeof (int));
     
+    /*
+     * Structure matching based on secondary structure orientation
+     * Two algorithms used:
+     * - Smith Waterman
+     * - Hungarian
+     */
     
-/*
-    if (1) {
-        retval = complement_match_old(&X_rep, &Y_rep, map, map_max,
-                &map_ctr, map_best, best_max, -1);
-    } else {
-        retval = match_clustering(&X_rep, &Y_rep, map, map_max,
-                &map_ctr, map_best, best_max, -1);
-    }
-    
-*/
-    
-    retval1 = complement_match_old(&X_rep, &Y_rep, map, map_max,
+    retval1 = complement_match(&X_rep, &Y_rep, map, map_max,
                 &map_ctr, map_best, best_max, -1);
     options.sw_score = 0;
-    retval2 = complement_match_old(&X_rep, &Y_rep, map_hung, map_max,
+    retval2 = complement_match(&X_rep, &Y_rep, map_hung, map_max,
                 &map_ctr_hung, map_best_hung, best_max, -1);
     
     
@@ -607,7 +611,6 @@ int compare(Descr * descr1, Descr *descr2, Score *score, Score *score_hung) {
                                 &qry_structure, & tgt_structure, 0);
                 } 
             }
-            // TODO think about possibility for hungarian
             protein_shutdown(&qry_structure);
             protein_shutdown(&tgt_structure);
 
@@ -625,7 +628,7 @@ int compare(Descr * descr1, Descr *descr2, Score *score, Score *score_hung) {
                     best_ctr++;
                 }
             }
-            // TODO - do something for Hungarian too
+            // TODO - do something for Hungarian too. Currently without maps
         }
     } /* end if best_ctr */
 

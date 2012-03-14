@@ -304,18 +304,14 @@ int map_quality_metrics (Representation *X_rep, Representation *Y_rep,
 	 }
     }
     
-    /* dynamic programming using the "image" */
+    /* dynamic programming using the "image" or the hungarian algorithm */
     
     if (options.sw_score) {
         smith_waterman (penalty_params, NX, NY, map->image, map->x2y, map->y2x, &aln_score);
     } else {
-        scoring (NX, NY, map->image, map->x2y, map->y2x, &aln_score);
+        hungarian_alignment (NX, NY, map->image, map->x2y, map->y2x, &aln_score);
     }
     
-    
-    // Mile : This is call for an alternative scoring
-    //
-    // Mile; end of the alternative scoring
     
     map_assigned_score (X_rep, map);
 
@@ -583,7 +579,7 @@ int smith_waterman (Penalty_parametrization *params, int max_i, int max_j, doubl
  * @return 
  */
 
-int scoring (int NX, int NY, double **similarity, int * x2y, int * y2x, double * alignment ) {
+int hungarian_alignment (int NX, int NY, double **similarity, int * x2y, int * y2x, double * alignment ) {
     int i,j;
     *alignment  = 0;
     for (i =0; i < NX; ++i) x2y[i] = -10;
@@ -634,11 +630,11 @@ int scoring (int NX, int NY, double **similarity, int * x2y, int * y2x, double *
  * @return matrix of integers
  */
 
-void similarity_to_scoring(int NX, int NY, int multiplier, double** similarity, int ** scoring ) {
+void similarity_to_scoring(int NX, int NY, int multiplier, double** similarity, int ** hungarian_alignment ) {
   int i,j;
   
   for(i=0;i<NX;i++) {
-      for(j=0;j<NY;j++) scoring[i][j] = similarity[i][j] * multiplier;
+      for(j=0;j<NY;j++) hungarian_alignment[i][j] = similarity[i][j] * multiplier;
   }
 }
 
