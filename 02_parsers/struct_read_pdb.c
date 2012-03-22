@@ -36,7 +36,7 @@ int read_pdb ( char * pdbname,  char chain, Protein * protein, int postprocess) 
     int retval;
     int ssc2, b1, e1, b2, e2, length;
     int a_container_exists;
-    int overlap = 0;
+//    int overlap = 0;
     int return_value = 0, chain_found;
     int ca_trace, elmt_ctr;
     char single_letter ( char code[]);
@@ -756,7 +756,7 @@ int read_pdb ( char * pdbname,  char chain, Protein * protein, int postprocess) 
 
     /********************************************************************/
     /********************************************************************/
-    overlap = 0;
+//    overlap = 0;
     for (sse_ctr=0; sse_ctr<no_strands+no_helices; sse_ctr++) {
 	if ( sse_sequence[sse_ctr]%2 ) {
 	    strandctr = sse_sequence[sse_ctr]/2;
@@ -783,7 +783,7 @@ int read_pdb ( char * pdbname,  char chain, Protein * protein, int postprocess) 
 		if ( length > MAX_ALLOWED_OVERLAP ) {
 		    printf ("overlap: b1:%d  b2:%d  e1:%d  e2:%d  -- len: %d\n",
 		    	    b1, b2, e1, e2, length);
-		    overlap = 1;
+//		    overlap = 1;
 		}
 		continue; /* no problem */
 	    } else if (b2 < b1 ) {

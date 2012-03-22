@@ -159,7 +159,8 @@ int gradient(int first_call, double **x,
 	     double alpha, double q[4], double grad[4]) {
     
     int i,j,k,m, n, p;
-    double sum, f;
+    double sum;
+    // double f;
     double alpha_sq = alpha*alpha;
     double scalar2;
     static double **prefactor = NULL;
@@ -204,7 +205,7 @@ int gradient(int first_call, double **x,
     for (k=0; k<4; k++ ) grad[k] = 0.0;
     
     
-    f = 0;
+//    f = 0;
     for (i=0; i < NX; i++ ) {
 	for (j=0; j < NY; j++) {
 
