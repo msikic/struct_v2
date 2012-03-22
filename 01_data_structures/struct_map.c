@@ -622,7 +622,7 @@ int hungarian_alignment (int NX, int NY, double **similarity, int * x2y, int * y
 }
 
 /**
- * Function that convert similarity matrix of doubles to scoring matrix of integers
+ * Function that converts similarity matrix of doubles to scoring matrix of integers
  * Scoring matrix is necessary to the Hungarian algorithm 
  * @param m input double matrix
  * @param rows

@@ -447,7 +447,7 @@ int compare(Descr * descr1, Descr *descr2, Score *score, Score *score_hung) {
     /* descr 1 is db or target, descr2 is query - important in postprocessing*/
     int retval, retval1, retval2;
     int map_ctr, map_ctr_hung, best_ctr;
-    int NX, NY, NX_eff, NY_eff;
+    int NX, NY; //NX_eff, NY_eff;
     Representation X_rep = {0}, Y_rep = {0};
 
     //static Map * map = NULL;
@@ -489,9 +489,9 @@ int compare(Descr * descr1, Descr *descr2, Score *score, Score *score_hung) {
     /****************************************/
     /*  shorthands   */
     NX = X_rep.N_full;
-    NX_eff = X_rep.N_compact;
+  //  NX_eff = X_rep.N_compact;
     NY = Y_rep.N_full;
-    NY_eff = Y_rep.N_compact;
+//    NY_eff = Y_rep.N_compact;
 
 
     if ((map = init_map(NX, NY, map_max)) == NULL) return 1;
