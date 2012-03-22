@@ -36,7 +36,8 @@ int complement_match (Representation* X_rep, Representation* Y_rep,
     int top_ctr;
     int **best_triple_x;
     int **best_triple_y;
-    int retval, done = 0;
+    int retval; 
+    int done = 0;
     int best_ctr;
     int i, j;
     int t;
@@ -171,7 +172,7 @@ int complement_match (Representation* X_rep, Representation* Y_rep,
     /*********************************************/
     /*   main loop                               */
     /*********************************************/
-    for (top_ctr=0; top_ctr<no_top_rmsd; top_ctr++) {
+    for (top_ctr=0; top_ctr<no_top_rmsd, done==0; top_ctr++) {
 
 
 	if ( best_rmsd[top_ctr] > BAD_RMSD ) break;

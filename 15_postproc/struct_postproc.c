@@ -30,7 +30,7 @@ int postprocess (Descr *descr1, Protein * protein1, Representation *rep1,
     int first_res_1, first_res_2;
     int last_res_next_loop_1, last_res_next_loop_2; 
     int first_res_next_loop_1, first_res_next_loop_2;
-    int last_element_1, last_element_2;
+    //int last_element_1, last_element_2;
     int type, *type_1, *type_2;
     
     char tmp[PDB_ATOM_RES_NO_LEN+1] = {'\0'};
@@ -45,12 +45,14 @@ int postprocess (Descr *descr1, Protein * protein1, Representation *rep1,
     Element * element;
     /* for the MC: */
     int max_no_steps = 20, no_steps = 0;
-    int done = 0, toggle = 0;
+    int done = 0;
+    // int toggle = 0;
     double *current_q,  *old_q, *current_T, *old_T;
     double *best_q, *best_T;
     double old_score = total_score, current_score = 0.0, d_mc = 0.5;
     double max_score;
-    double t_mc, d_init;
+    /// double t_mc, 
+    double d_init;
     double aux; // step = NR_POINTS/MAX_EXP_VALUE;
    
      
@@ -283,7 +285,7 @@ int postprocess (Descr *descr1, Protein * protein1, Representation *rep1,
 
     /* t_mc = exp ( (1.0- (double)anneal_round)/10.0); */
     d_mc = d_init;
-    t_mc = 5;
+//    t_mc = 5;
 	
     memcpy (current_q, best_q, 4*sizeof(double));
     memcpy (current_T, best_T, 3*sizeof(double));
@@ -293,7 +295,7 @@ int postprocess (Descr *descr1, Protein * protein1, Representation *rep1,
     max_score = 0;
     no_steps  = 0;
     
-    toggle = 1;
+//    toggle = 1;
     done = 0;
     
     while (no_steps < max_no_steps && !done ) {
@@ -355,16 +357,16 @@ int postprocess (Descr *descr1, Protein * protein1, Representation *rep1,
 	    similarity[resctr1][resctr2] = -1;
 	}
     }
-    last_element_1 = 0;
-    last_element_2 = 0;
+   // last_element_1 = 0;
+    // last_element_2 = 0;
     for (element_ctr_1=0; element_ctr_1 < descr1->no_of_elements; element_ctr_1++) {
 
 	
 	element_ctr_2 = map->x2y[element_ctr_1];
 	if (element_ctr_2 <  0) continue;
 
-	last_element_1 = element_ctr_1;
-	last_element_2 = element_ctr_2;
+	// last_element_1 = element_ctr_1;
+	// last_element_2 = element_ctr_2;
 	
 
 
